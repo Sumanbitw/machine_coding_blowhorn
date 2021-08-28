@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-// import { Transition } from "@headlessui/react";
+import React from "react";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   return (
     <section>
       <div class="fixed top-0 left-0 w-full flex flex-row justify-center z-50 bg-white">
@@ -15,7 +13,7 @@ function Navbar() {
               </span>
             </a>
           </div>
-          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
+          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center" style={!isOpen ? {display : "none"} : {display : "hidden"}}>
             <a
               href="/home"
               class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
