@@ -1,12 +1,13 @@
-import React from "react";
-
+import React, { useState } from "react";
+// import { Transition } from "@headlessui/react";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <section>
       <div class="fixed top-0 left-0 w-full flex flex-row justify-center z-50 bg-white">
         <nav class="border-b-2 w-full md:w-11/12 p-4 flex flex-row justify-between items-center">
-          <div class="flex items-center justify-start w-1/4 h-full pr-4 ">
+          <div class="flex items-center justify-start w-1/4 h-full pr-4">
             <a href="/" class="inline-block py-4 md:py-0">
               <span class="p-1 text-xl font-black leading-none text-gray-900">
                 <span>nullBrains</span>
@@ -14,7 +15,7 @@ function Navbar() {
               </span>
             </a>
           </div>
-          <div class="flex flex-col items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
+          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
             <a
               href="/home"
               class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
@@ -69,7 +70,7 @@ function Navbar() {
             </a>
           </div>
           <div class="md:hidden">
-            <div >
+            <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
