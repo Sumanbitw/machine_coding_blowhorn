@@ -13,7 +13,7 @@ function Navbar() {
               </span>
             </a>
           </div>
-          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center" style={!isOpen ? {display : "none"} : {display : "hidden"}}>
+          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
             <a
               href="/home"
               class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
