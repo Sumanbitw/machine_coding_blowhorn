@@ -18,7 +18,7 @@ function Main() {
           <a href="/" type="button" class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">Purchase Now</a>
           <span class="absolute top-0 right-0 px-2 py-1 -mt-3 -mr-6 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">$15/month</span>
           </span>
-          <a href="/" class="mt-3 text-sm text-indigo-500">Learn More</a>
+          <a href="/" class="mt-3 text-lg text-indigo-500">Learn More</a>
       </div>
     </div>
   );
