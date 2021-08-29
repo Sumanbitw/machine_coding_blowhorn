@@ -5,15 +5,15 @@ import { menu } from "../../utils/menuUtils";
 import { checkUrl } from "../../utils/util";
 
 const Navbar = () => {
-  const [currentUrl, setCurrentUrl] = useState(window.location.href);
-  const [urlChanged, setUrlChanged] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(window.location.href);
+  const [link, setlink] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (window.location.href !== currentUrl) {
-      setCurrentUrl(window.location.href);
+    if (window.location.href !== currentLocation) {
+      setCurrentLocation(window.location.href);
     }
-  }, [urlChanged]);
+  }, [link]);
 
   return (
     <section className="w-full px-6 pb-12 antialiased bg-white">
@@ -47,11 +47,11 @@ const Navbar = () => {
                       key={index}
                       href={linkObj.href}
                       onClick={() => {
-                        setUrlChanged((prev) => !prev);
+                        setlink((prev) => !prev);
                         setShowModal(false);
                       }}
                       className={`inline-block w-full py-2 mx-0 ml-6 font-medium text-left  md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center hover:underline ${
-                        checkUrl(currentUrl) === linkObj.href
+                        checkUrl(currentLocation) === linkObj.href
                           ? "text-indigo-600"
                           : "text-gray-600"
                       }`}
