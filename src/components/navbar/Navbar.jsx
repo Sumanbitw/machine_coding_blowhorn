@@ -13,7 +13,7 @@ const Navbar = () => {
     if (window.location.href !== currentLocation) {
       setCurrentLocation(window.location.href);
     }
-  }, [link]);
+  }, [link, currentLocation]);
 
   return (
     <section className="w-full px-6 pb-12 antialiased bg-white">
