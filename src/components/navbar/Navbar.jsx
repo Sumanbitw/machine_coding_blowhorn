@@ -1,92 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FaBars, FaWindowClose } from "react-icons/fa";
+import { AiOutlineSearch } from "react-icons/ai";
+import { menu } from "../../utils/menuUtils";
+import { checkUrl } from "../../utils/util";
 
-function Navbar() {
+const Navbar = () => {
+  const [currentUrl, setCurrentUrl] = useState(window.location.href);
+  const [urlChanged, setUrlChanged] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    if (window.location.href !== currentUrl) {
+      setCurrentUrl(window.location.href);
+    }
+  }, [urlChanged]);
+
   return (
-    <section>
-      <div class="fixed top-0 left-0 w-full flex flex-row justify-center z-50 bg-white">
-        <nav class="border-b-2 w-full md:w-11/12 p-4 flex flex-row justify-between items-center">
-          <div class="flex items-center justify-start w-1/4 h-full pr-4">
-            <a href="/" class="inline-block py-4 md:py-0">
-              <span class="p-1 text-xl font-black leading-none text-gray-900">
-                <span>nullBrains</span>
-                <span class="text-indigo-600">.</span>
-              </span>
-            </a>
-          </div>
-          <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
-            <a
-              href="/home"
-              class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
+    <section className="w-full px-6 pb-12 antialiased bg-white">
+      <div className="mx-auto max-w-7xl">
+        <nav className={`relative z-50 h-24 select-none`}>
+          <div className="container relative flex flex-wrap items-center justify-between h-24 mx-auto overflow-hidden font-medium border-b border-gray-200 md:overflow-visible lg:justify-center sm:px-4 md:px-2">
+            <div className="flex items-center justify-start w-1/4 h-full pr-4">
+              <a href="#_" className="inline-block py-4 md:py-0">
+                <span className="p-1 text-xl font-black leading-none text-gray-900">
+                  <span>nullBrains.</span>
+                </span>
+              </a>
+            </div>
+            <div
+              className={`top-0 left-0 right-0 items-start w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 lg:text-base md:bg-transparent md:p-0 md:relative md:flex transition-all duration-200 ease-in-out transform  ${
+                showModal ? "flex fixed" : "hidden"
+              }`}
             >
-              Home
-            </a>
-            <a
-              href="/features"
-              class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
-            >
-              Features
-            </a>
-            <a
-              href="/features"
-              class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
-            >
-              Blog
-            </a>
-            <a
-              href="/features"
-              class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center"
-            >
-              Contact
-            </a>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
-          </div>
-          <div class="flex flex-col items-start justify-end w-full pt-4 md:items-center md:w-1/3 md:flex-row md:py-0">
-            <a
-              href="/"
-              class="w-full px-6 py-2 mr-0 text-gray-700 md:px-0 lg:pl-2 md:mr-4 lg:mr-5 md:w-auto"
-            >
-              Sign In
-            </a>
-            <a
-              href="/"
-              class="inline-flex items-center w-full px-6 py-3 text-sm font-medium leading-4 text-white bg-indigo-600 md:px-3 md:w-auto md:rounded-full lg:px-5 hover:bg-indigo-500 focus:outline-none md:focus:ring-2 focus:ring-0 focus:ring-offset-2 focus:ring-indigo-600"
-            >
-              Sign Up
-            </a>
-          </div>
-          <div class="md:hidden">
-            <div>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+              <div
+                className={`flex-col w-full h-auto overflow-hidden bg-white rounded-lg md:bg-transparent md:overflow-visible md:rounded-none md:relative md:flex md:flex-row `}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
+                <a
+                  href="#_"
+                  className="inline-flex items-center w-auto h-16 px-6 text-xl font-black leading-none text-gray-900 md:hidden"
+                >
+                  nullBrains.
+                </a>
+                <div className="flex flex-col items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
+                  {menu.map((linkObj, index) => (
+                    <a
+                      key={index}
+                      href={linkObj.href}
+                      onClick={() => {
+                        setUrlChanged((prev) => !prev);
+                        setShowModal(false);
+                      }}
+                      className={`inline-block w-full py-2 mx-0 ml-6 font-medium text-left  md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center hover:underline ${
+                        checkUrl(currentUrl) === linkObj.href
+                          ? "text-indigo-600"
+                          : "text-gray-600"
+                      }`}
+                    >
+                      {linkObj.link}
+                    </a>
+                  ))}
+                  <a
+                    href="#_"
+                    className="absolute top-0 left-0 hidden py-2 mt-6 ml-10 mr-2 text-gray-600 lg:inline-block md:mt-0 md:ml-2 lg:mx-3 md:relative"
+                  >
+                    <AiOutlineSearch
+                      className="text-gray-600 hover:underline focus:text-indigo-600 font-medium"
+                      onClick={(e) => e.preventDefault()}
+                    />
+                  </a>
+                </div>
+                <div className="flex flex-col items-start justify-end w-full pt-4 md:items-center md:w-1/3 md:flex-row md:py-0">
+                  <a
+                    href="/"
+                    className="w-full px-6 py-2 mr-0 text-gray-700 md:px-0 lg:pl-2 md:mr-4 lg:mr-5 md:w-auto"
+                  >
+                    Sign In
+                  </a>
+                  <a
+                    href="/"
+                    className="inline-flex items-center w-full px-6 py-3 text-sm font-medium leading-4 text-white bg-indigo-600 md:px-3 md:w-auto md:rounded-full lg:px-5 hover:bg-indigo-500 focus:outline-none md:focus:ring-2 focus:ring-0 focus:ring-offset-2 focus:ring-indigo-600"
+                  >
+                    Sign Up
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              className="absolute right-0 flex flex-col items-center justify-center w-10 h-10 bg-white rounded-full cursor-pointer md:hidden hover:bg-gray-100"
+              onClick={() => setShowModal(!showModal)}
+            >
+              {!showModal ? (
+                <FaBars className="text-xl" />
+              ) : (
+                <FaWindowClose className="text-xl" />
+              )}
             </div>
           </div>
         </nav>
       </div>
     </section>
   );
-}
+};
 
 export default Navbar;
